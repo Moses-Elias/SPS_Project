@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmWise Login/SignUp</title>
+    <link rel="stylesheet" href="stylingsheet.css">
+    <script src="login.js" defer></script> <!-- Linking to the external JS file -->
+</head>
+<body>
+    <header id="header">
+        <a href="Home Page.html">Home</a>
+        <a href="LoginPage.html">Login</a>
+        <a href="course.html">Course</a>
+        <a href="insight.html">Insight</a>
+    </header>
+
+    <div class="auth-container background-image">
+        <!-- Login Form -->
+        <div class="login-container" id="loginForm">
+            <h1>Login to E-learning</h1>
+            <form id="loginFormData">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="button" id="loginBtn">Login</button>
+            </form>
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleForm()">Sign Up</a></p>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="signup-container" id="signupForm" style="display: none;">
+            <h1>Sign Up</h1>
+            <form id="signupFormData">
+                <label for="new-username">Username</label>
+                <input type="text" id="new-username" name="new-username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="new-password">Password</label>
+                <input type="password" id="new-password" name="new-password" required>
+
+                <button type="button" id="signupBtn">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="javascript:void(0);" onclick="toggleForm()">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript function to toggle between login and signup forms
+        function toggleForm() {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+            }
+        }
+
+        // Handle login form submission
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                // Save token in local storage
+                localStorage.setItem('token', data.token);
+                alert('Login successful');
+                // Redirect to another page if needed
+                window.location.href = 'Home Page.html';
+            } else {
+                alert('Login failed: ' + data.msg);
+            }
+        });
+
+        // Handle signup form submission
+        document.getElementById('signupBtn').addEventListener('click', async () => {
+            const newUsername = document.getElementById('new-username').value;
+            const email = document.getElementById('email').value;
+            const newPassword = document.getElementById('new-password').value;
+
+            const response = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: newUsername, email, password: newPassword })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert('Registration successful');
+                // Optionally, automatically log in after successful registration
+                window.location.href = 'LoginPage.html';
+            } else {
+                alert('Registration failed: ' + data.msg);
+            }
+        });
+    </script>
+</body>
+</html>
