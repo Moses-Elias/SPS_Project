@@ -48,46 +48,38 @@ async def ai_recommendation(request: Request):
     try:
         data = await request.json()
         user_input = data.get("user_input")
-
         if not user_input:
             return {"error": "No user input provided"}
 
-        # Get all courses from DB
+        # Get courses
         courses = list(courses_collection.find({}, {"title": 1, "description": 1}))
         if not courses:
             return {"error": "No courses found in the database"}
 
-        course_list = "\n".join(
-            [f"- {c['title']}: {c.get('description', 'No description')}" for c in courses]
+        print("Courses from DB:", courses)
+        print("User input:", user_input)
+
+        # Preprocess input
+        user_keywords = set(user_input.lower().split())
+
+        # Score courses by keyword match
+        def score_course(course):
+            text = f"{course.get('title', '')} {course.get('description', '')}".lower()
+            return sum(1 for word in user_keywords if word in text)
+
+        scored_courses = sorted(
+            courses,
+            key=lambda c: score_course(c),
+            reverse=True
         )
 
-        prompt = f"""
-You are a helpful course recommender for an e-learning platform.
+        top_courses = [course['title'] for course in scored_courses if score_course(course) > 0][:3]
 
-Here is a list of courses:
-{course_list}
-
-The user said they are interested in: "{user_input}"
-
-Recommend 3 courses from the list that best match their interest. Only return course titles.
-"""
-
-        # Generate response from OpenAI API
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
-        )
-
-        reply = response.choices[0].message.content
-        recommendations = [line.strip("- ") for line in reply.split("\n") if line.strip()]
-        recommendations = recommendations[:3]  # Ensure 3 recommendations
-
-        return {"recommended_courses": recommendations}
+        return {
+            "recommended_courses": top_courses or ["No relevant courses found"]
+        }
 
     except Exception as e:
         logging.error(f"Error: {str(e)}")
         return {"error": f"An error occurred: {str(e)}"}
 
-@app.get("/")
-def root():
-    return {"message": "Server is running!"}
