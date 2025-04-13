@@ -1,0 +1,76 @@
+________________________________________
+models/ – Database Schemas (Mongoose)
+This folder holds the schema definitions that define the structure of the MongoDB collections using Mongoose.
+🔹 User.js
+•	Defines how a user is stored in MongoDB.
+•	Common fields:
+•	Used for login, registration, and role-based access control.
+🔹 Subject.js
+•	Represents a course or subject (like "Math", "Chemistry").
+•	Typical fields:
+________________________________________
+routes/ – API Endpoints
+This folder maps HTTP requests to controller functions.
+🔹 authRoutes.js
+•	Handles:
+o	POST /api/auth/register – Register new users.
+o	POST /api/auth/login – Authenticate users and return a JWT token.
+🔹 subjectRoutes.js
+•	Handles subject-related endpoints:
+o	GET /api/subjects – Fetch all subjects.
+o	POST /api/subjects – Add new subject (admin or teacher only).
+o	Can later be extended to update or delete subjects.
+🔹 protected.js
+•	Example of a protected route that requires users to be authenticated.
+•	Typically checks the JWT from the frontend to validate access.
+•	Useful for dashboards, uploading materials, etc.
+________________________________________
+ controllers/ – Business Logic Layer
+Instead of writing all logic inside route files, controllers handle the actual logic and keep routes clean.
+🔹 authController.js (common content)
+•	register() – Checks if a user exists, hashes password, saves user to DB.
+•	login() – Verifies username/password, returns a JWT.
+•	JWT allows frontend to make authenticated requests (like /api/subjects).
+________________________________________
+middleware/ – Reusable Authentication Helpers
+Middleware functions are run before your routes.
+🔹 authMiddleware.js
+•	Checks if the Authorization header contains a valid JWT token.
+•	Decodes token and attaches user info (req.user = decoded) so that protected routes can access it.
+________________________________________
+public/ – Frontend Files (Static Assets)
+This is where the user interface lives, served directly by Express using app.use(express.static("public")).
+🔹 LoginPage.html
+•	Page for login and sign-up.
+•	Has JS scripts that use fetch() to hit your /api/auth/login and /api/auth/register endpoints.
+🔹 course.html, Home Page.html
+•	Pages that might show different content based on user roles.
+•	Can make fetch() calls to your backend to load course info, etc.
+🔹 login.js
+•	Handles JS logic for login and registration using:
+•	Stores JWT token in localStorage after login so it can be used for authenticated requests.
+________________________________________
+ server.js — The Entry Point of the Backend
+The starting point of the backend application. It sets up the Express server, connects to MongoDB, handles middleware, and maps API routes.
+This file sets up:
+•	Environment variables (dotenv.config())
+•	Database connection (mongoose.connect(...))
+•	Middleware (cors, express.json, static files)
+•	API routing (/api/auth, /api/subjects)
+•	Port listening
+________________________________________
+.env – Environment Configuration
+Holds secrets and connection strings like:
+
+PORT=5000
+MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/test
+JWT_SECRET=somerandomstring
+________________________________________
+How It All Works Together:
+1.	Frontend user fills in login or registration.
+2.	Frontend JS uses fetch() to POST data to backend (/api/auth/...).
+3.	Backend (authRoutes) processes request, returns JWT on success.
+4.	Frontend stores JWT in localStorage.
+5.	Frontend makes secure requests using Authorization: Bearer <token> to access protected content (e.g., subjects, courses).
+6.	Backend checks token with middleware before giving access.
+
