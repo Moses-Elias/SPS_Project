@@ -344,5 +344,40 @@ document.getElementById('food-form').addEventListener('submit', function(event) 
 
     // Update the inventory list and low stock list
     updateInventory();
+
+    
+        async function getRecommendations() {
+            const userInput = document.getElementById("interest-input").value;
+            const resultDiv = document.getElementById("recommendation-result");
+            resultDiv.innerHTML = "Loading...";
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/ai-recommend/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ user_input: userInput })
+                });
+
+                const data = await response.json();
+
+                if (data.recommended_courses) {
+                    resultDiv.innerHTML = "<h3>Recommended Courses:</h3>";
+                    data.recommended_courses.forEach(course => {
+                        const div = document.createElement("div");
+                        div.className = "recommended-course";
+                        div.textContent = course;
+                        resultDiv.appendChild(div);
+                    });
+                } else {
+                    resultDiv.innerHTML = `<p style="color: red;">${data.error || "No recommendations found."}</p>`;
+                }
+
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    
 });
 
