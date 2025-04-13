@@ -1,26 +1,10 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from openai import OpenAI
 from pymongo import MongoClient
-from dotenv import load_dotenv
-import os
 import logging
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Debug print to confirm if API key is loading
-api_key = os.getenv("OPENAI_API_KEY")
-print("Loaded API key:", api_key)
-
-if not api_key:
-    raise ValueError("OPENAI_API_KEY not found in .env file")
-
-# Initialize OpenAI client
-client = OpenAI(api_key=api_key)
 
 # MongoDB setup
 mongo_client = MongoClient("mongodb://localhost:27017/")
@@ -82,4 +66,3 @@ async def ai_recommendation(request: Request):
     except Exception as e:
         logging.error(f"Error: {str(e)}")
         return {"error": f"An error occurred: {str(e)}"}
-
