@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="stylingsheet.css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .slideshow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slideshow-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      animation: fade 24s infinite;
+    }
+
+    .slideshow-container img:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .slideshow-container img:nth-child(2) {
+      animation-delay: 8s;
+    }
+
+    .slideshow-container img:nth-child(3) {
+      animation-delay: 16s;
+    }
+
+    @keyframes fade {
+      0% {opacity: 0;}
+      10% {opacity: 1;}
+      30% {opacity: 1;}
+      40% {opacity: 0;}
+      100% {opacity: 0;}
+    }
+
+    header#header {
+      width: 100%;
+      background-color: rgba(0, 128, 0, 0.85); /* Green background added */
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    header#header a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white; /* Text is white for contrast */
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9); 
+      border-radius: 10px;
+      margin: 30px auto;
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #B22222;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .left-column, .right-column {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .center-image img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .feature-box h2 {
+      color: #333;
+    }
+
+    .feature-box p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slideshow-container">
+    <img src="back1.jpg" alt="Background Image 1">
+    <img src="back2.jpg" alt="Background Image 2">
+    <img src="back4.jpg" alt="Background Image 3">
+  </div>
+
+  <header id="header">
+    <a href="Home.html">Home</a>
+    <a href="LoginPage.html">Login</a> 
+    <a href="Aboutus.html">About Us</a>
+  </header>
+
+  <div class="container">
+    <h1 style="color: black;">Why Choose STEM?</h1>
+    
+    <div style="text-align: center; margin: 20px;">
+      <a href="LoginPage.html">
+        <button>Login</button>
+      </a>
+    </div>
+
+    <div class="features">
+      <div class="left-column">
+        <div class="feature-box">
+          <h2>Transferable skills</h2>
+          <p>A STEM degree equips you with a broad range of transferable skills that are highly valued in various professions.</p>
+          <a href="https://www.stem.org.uk/news-and-views/opinions/stem-skills-any-career" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+
+        <div class="feature-box">
+          <h2>Excellent Salary</h2>
+          <p>STEM careers offer excellent opportunities for international travel and collaboration. The demand for STEM professionals extends worldwide.</p>
+          <a href="https://www.edvisehub.com/6-reasons-to-pursue-a-stem-degree-in-2023/" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+
+        <div class="feature-box">
+          <h2>Encourages Independence</h2>
+          <p>Fields fill you with the joy of exploration and discovery, hands-on experimentation, and rewarding results.</p>
+          <a href="https://collegelife.co/magazine/reasons-to-study-stem/" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="center-image">
+        <img src="it.jpg" alt="E-learning">
+      </div>
+
+      <div class="right-column">
+        <div class="feature-box">
+          <h2>Critical Thinking</h2>
+          <p>For instance, STEM encourages students to explore and analyse, developing critical thinking and problem-solving skills.</p>
+          <a href="https://studyonline.canberra.edu.au/blog/why-stem-important" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+
+        <div class="feature-box">
+          <h2>Hands on Learning</h2>
+          <p>Incorporates Hands-On Learning. While many subjects rely on lecture-based lessons, STEM can provide a break in that learning style and provide hands-on interactions</p>
+          <a href="https://sherpa-online.com/blog/read/why-study-stem-subjects-at-gcse" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+
+        <div class="feature-box">
+          <h2>Job Demand</h2>
+          <p>With the rapid growth of job opportunities, your employability is increased, especially in topics that have become the priority today</p>
+          <a href="https://collegelife.co/magazine/reasons-to-study-stem/" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
