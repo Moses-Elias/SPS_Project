@@ -1,0 +1,504 @@
+<!-- Home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | NamStem eLearning</title>
+  <link rel="stylesheet" href="stylingsheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="theme.js" defer></script>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      overflow-x: hidden;
+      background: var(--main-bg, #f4f4f4);
+      color: var(--main-text, #222);
+      transition: background 0.3s, color 0.3s;
+    }
+    :root {
+      --main-bg: #f4f4f4;
+      --main-text: #222;
+      --header-bg: #4caf50;
+      --header-text: #fff;
+      --header-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --card-bg: #fff;
+      --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      --accent: #B22222;
+      --accent2: #FFD700;
+      --footer-bg: #222;
+      --footer-text: #fff;
+    }
+    body.dark-mode {
+      --main-bg: #181a1b;
+      --main-text: #e0e0e0;
+      --header-bg: #23272a;
+      --header-text: #FFD700;
+      --header-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      --card-bg: #23272a;
+      --card-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      --accent: #FFD700;
+      --accent2: #B22222;
+      --footer-bg: #181a1b;
+      --footer-text: #FFD700;
+    }
+    .slideshow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slideshow-container img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      position: absolute;
+      animation: fade 24s infinite;
+    }
+    .slideshow-container img:nth-child(1) { animation-delay: 0s; }
+    .slideshow-container img:nth-child(2) { animation-delay: 8s; }
+    .slideshow-container img:nth-child(3) { animation-delay: 16s; }
+    @keyframes fade {
+      0% {opacity: 0;}
+      10% {opacity: 1;}
+      30% {opacity: 1;}
+      40% {opacity: 0;}
+      100% {opacity: 0;}
+    }
+    #header {
+      width: 100%;
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0;
+      box-shadow: var(--header-shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 0 0 18px 18px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .header-logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--header-text);
+      margin: 0 24px 0 18px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .header-link {
+      color: var(--header-text);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 16px 18px;
+      border-radius: 0 0 12px 12px;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .header-link:hover, .header-link.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--header-text);
+      font-size: 22px;
+      cursor: pointer;
+      margin: 0 24px 0 0;
+      transition: color 0.3s;
+    }
+    .theme-toggle:hover { color: var(--accent2); }
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px 20px 20px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      margin: 110px auto 30px auto;
+      max-width: 1200px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+    .container h1 {
+      color: var(--accent);
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .container .subtitle {
+      color: #444;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .left-column, .right-column {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .center-image img {
+      width: 320px;
+      height: auto;
+      border-radius: 14px;
+      margin: 20px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .feature-box {
+      background: var(--card-bg);
+      padding: 18px 18px 18px 18px;
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
+      min-width: 220px;
+    }
+    .feature-box:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    }
+    .feature-box h2 {
+      color: var(--accent);
+      font-size: 1.3em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .feature-box p {
+      color: #666;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    .feature-box button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: background 0.2s;
+    }
+    .feature-box button:hover { background: var(--accent2); color: #222; }
+    .login-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 32px;
+      font-size: 1.2em;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin: 20px 0 0 0;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--accent2); color: #222; }
+    .recommend-section {
+      margin: 40px auto 0;
+      max-width: 700px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .recommend-section h2 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+    .recommend-section textarea {
+      width: 90%;
+      min-height: 60px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      resize: vertical;
+    }
+    .recommend-section button {
+      background: var(--header-bg);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: background 0.3s;
+    }
+    .recommend-section button:hover { background: var(--accent); }
+    .recommend-list {
+      margin-top: 18px;
+      text-align: left;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .recommend-list li {
+      background: #f7f7f7;
+      margin-bottom: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 15px;
+      color: #333;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    /* Footer */
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 40px 0 20px 0;
+      margin-top: 60px;
+      border-radius: 20px 20px 0 0;
+      font-size: 16px;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-section {
+      flex: 1 1 220px;
+      min-width: 220px;
+      margin-bottom: 20px;
+    }
+    .footer-section h3 {
+      color: var(--accent2);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .footer-section ul, .footer-section p {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--footer-text);
+    }
+    .footer-section a {
+      color: var(--accent2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover { color: #fff; }
+    .footer-social {
+      margin-top: 10px;
+    }
+    .footer-social a {
+      color: var(--accent2);
+      margin-right: 12px;
+      font-size: 22px;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: #fff; }
+    .footer-bottom {
+      text-align: center;
+      color: #bbb;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+    @media (max-width: 900px) {
+      .features { flex-direction: column; }
+      .footer-container { flex-direction: column; align-items: center; }
+      .footer-section { min-width: 0; }
+      .center-image img { width: 90vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow-container">
+    <img src="back1.jpg" alt="Background Image 1">
+    <img src="back2.jpg" alt="Background Image 2">
+    <img src="back4.jpg" alt="Background Image 3">
+  </div>
+  <header id="header">
+    <div class="header-left">
+      <span class="header-logo"><i class="fas fa-atom"></i> NamStem</span>
+      <nav class="header-links">
+        <a href="Home.html" class="header-link active"><i class="fas fa-home"></i> Home</a>
+        <a href="LoginPage.html" class="header-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="Aboutus.html" class="header-link"><i class="fas fa-users"></i> About Us</a>
+      </nav>
+    </div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+  </header>
+  <div class="container">
+    <h1>Why Choose STEM?</h1>
+    <div class="subtitle">Empowering Namibian students for a brighter, tech-driven future.</div>
+    <a href="LoginPage.html">
+      <button class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</button>
+    </a>
+    <div class="features">
+      <div class="left-column">
+        <div class="feature-box">
+          <h2><i class="fas fa-exchange-alt"></i> Transferable skills</h2>
+          <p>A STEM degree equips you with a broad range of transferable skills that are highly valued in various professions.</p>
+          <a href="https://www.stem.org.uk/news-and-views/opinions/stem-skills-any-career" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+        <div class="feature-box">
+          <h2><i class="fas fa-money-bill-wave"></i> Excellent Salary</h2>
+          <p>STEM careers offer excellent opportunities for international travel and collaboration. The demand for STEM professionals extends worldwide.</p>
+          <a href="https://www.edvisehub.com/6-reasons-to-pursue-a-stem-degree-in-2023/" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+        <div class="feature-box">
+          <h2><i class="fas fa-user-graduate"></i> Encourages Independence</h2>
+          <p>Fields fill you with the joy of exploration and discovery, hands-on experimentation, and rewarding results.</p>
+          <a href="https://collegelife.co/magazine/reasons-to-study-stem/" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+      </div>
+      <div class="center-image">
+        <img src="it.jpg" alt="E-learning">
+      </div>
+      <div class="right-column">
+        <div class="feature-box">
+          <h2><i class="fas fa-brain"></i> Critical Thinking</h2>
+          <p>For instance, STEM encourages students to explore and analyse, developing critical thinking and problem-solving skills.</p>
+          <a href="https://studyonline.canberra.edu.au/blog/why-stem-important" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+        <div class="feature-box">
+          <h2><i class="fas fa-hands-helping"></i> Hands on Learning</h2>
+          <p>Incorporates Hands-On Learning. While many subjects rely on lecture-based lessons, STEM can provide a break in that learning style and provide hands-on interactions</p>
+          <a href="https://sherpa-online.com/blog/read/why-study-stem-subjects-at-gcse" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+        <div class="feature-box">
+          <h2><i class="fas fa-chart-line"></i> Job Demand</h2>
+          <p>With the rapid growth of job opportunities, your employability is increased, especially in topics that have become the priority today</p>
+          <a href="https://collegelife.co/magazine/reasons-to-study-stem/" target="_blank">
+            <button>Read More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="recommendation-form">
+    <h2>Find Courses Based on Your Interests</h2>
+    <div class="form-group">
+      <label for="interest-input">Enter your interest:</label>
+      <input type="text" id="interest-input" placeholder="e.g., I want to learn Python">
+    </div>
+    <button onclick="getRecommendations()">Recommend</button>
+    <div id="recommendation-result"></div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>NamStem eLearning</h3>
+        <p>Implementation to support students, academic staff, researchers and administrators.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Student Support</h3>
+        <ul>
+          <li>Contact IT Support</li>
+          <li>081-6558253</li>
+          <li>085-7472343</li>
+          <li>E-mail: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>13 Jackson Kaujeua Street, Windhoek, Namibia</li>
+          <li>Phone: +264-81 655 8253</li>
+          <li>Email: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="footer-social">
+          <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 NamStem eLearning. All rights reserved.
+    </div>
+  </footer>
+  <script>
+ 
+
+    //Recommendation
+    async function getRecommendations() {
+        const userInput = document.getElementById("interest-input").value;
+        const resultDiv = document.getElementById("recommendation-result");
+        resultDiv.innerHTML = "Loading...";
+
+        try {
+            const response = await fetch("http://127.0.0.1:8000/ai-recommend/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ user_input: userInput })
+            });
+
+            const data = await response.json();
+
+            if (data.recommended_courses) {
+                resultDiv.innerHTML = "<h3>Recommended Courses:</h3>";
+                data.recommended_courses.forEach(course => {
+                    const div = document.createElement("div");
+                    div.className = "recommended-course";
+                    div.textContent = course;
+                    resultDiv.appendChild(div);
+                });
+            } else {
+                resultDiv.innerHTML = `<p style="color: red;">${data.error || "No recommendations found."}</p>`;
+            }
+
+        } catch (error) {
+            resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        }
+    }
+  </script>
+</body>
+</html

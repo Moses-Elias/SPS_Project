@@ -1,0 +1,204 @@
+<!-- Robotics.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics | NamStem eLearning</title>
+    <link rel="stylesheet" href="stylingsheet.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="theme.js" defer></script>
+</head>
+<body style="background-image: url('rbt.avif'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+    <header id="header">
+        <div class="header-left">
+            <span class="header-logo"><i class="fas fa-atom"></i> NamStem</span>
+            <nav class="header-links">
+                <a href="Home.html" class="header-link"><i class="fas fa-home"></i> Home</a>
+                <a href="course.html" class="header-link"><i class="fas fa-book-open"></i> Courses</a>
+                <a href="Aboutus.html" class="header-link"><i class="fas fa-users"></i> About Us</a>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+    </header>
+    <div class="page-header">
+        <h1><i class="fas fa-robot"></i> Robotics Course</h1>
+        <div class="course-description">
+            Embark on an exciting journey into the world of robotics and discover the technology, engineering, and intelligence that drive modern automated systems.
+        </div>
+    </div>
+    <div class="content-container">
+        <a href="course.html" class="back-courses"><i class="fas fa-arrow-left"></i> Back to Courses</a>
+        <h3 style="color:#4caf50;text-align:left;margin-bottom:10px;"><i class="fas fa-list"></i> Topics Covered</h3>
+        <button class="collapsible"><i class="fas fa-chevron-right"></i> Chapter 1: Foundations of Robotics</button>
+        <div class="chapter-content">
+            <ul>
+                <li>Era of Industrial Robots</li>
+                <li>Creation of Robotics</li>
+                <li>Manipulation and Dexterity</li>
+                <li>Locomotion and Navigation</li>
+            </ul>
+        </div>
+        <button class="collapsible"><i class="fas fa-chevron-right"></i> Chapter 2: Actuators & Drive Systems</button>
+        <div class="chapter-content">
+            <ul>
+                <li>Actuators and Drive Systems</li>
+                <li>DC Motors</li>
+                <li>Dynamics of Single-Axis Drive Systems</li>
+                <li>Power Electronics</li>
+                <li>Robot Controls and PWM Amplifiers of the 2.12 Laboratory</li>
+                <li>Optical Shaft Encoders</li>
+                <li>Brushless DC Motors</li>
+            </ul>
+        </div>
+        <button class="collapsible"><i class="fas fa-chevron-right"></i> Chapter 3: Mechanisms & Linkages</button>
+        <div class="chapter-content">
+            <ul>
+                <li>Robot Mechanisms</li>
+                <li>Joint Primitives and Serial Linkages</li>
+                <li>Parallel Linkages</li>
+            </ul>
+        </div>
+        <button class="recommend-btn" onclick="recommendCourse('Robotics')">
+            <i class="fas fa-thumbs-up"></i> Recommend this course
+            <span class="recommend-count" id="count-Robotics">0</span>
+        </button>
+        <div class="content-container lecture-notes">
+            <div class="content-title"><h3><i class="fas fa-file-pdf"></i> Lecture Notes</h3></div>
+            <h3>Download Course Chapters (PDF):</h3>
+            <ul>
+                <li><a href="Chapter 1(Robotics).pdf" target="_blank">Chapter 1</a></li>
+                <li><a href="Chapter 2(Robotics).pdf" target="_blank">Chapter 2</a></li>
+                <li><a href="Chapter 3(Robotics).pdf" target="_blank">Chapter 3</a></li>
+                <li><a href="Problem set 1.pdf" target="_blank">Problem Set 1</a></li>
+                <li><a href="Problem Set 2.pdf" target="_blank">Problem Set 2</a></li>
+                <li><a href="Problem set 3.pdf" target="_blank">Problem Set 3</a></li> 
+                <li><a href="Lab no.1.pdf" target="_blank">Lab 1</a></li>
+                <li><a href="Lab no.2.pdf" target="_blank">Lab 2</a></li>
+                <li><a href="Lab 3.pdf" target="_blank">Lab 3</a></li>
+                <li><a href="Rescue robotsFinal project.pdf" target="_blank">Final Project</a></li>
+            </ul>
+        </div>
+        <div class="content-container video-section">
+            <h3><i class="fas fa-video"></i> Rescue Robot Demonstration</h3>
+            <video width="100%" height="auto" controls>
+                <source src="rescue_robot.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NamStem eLearning</h3>
+                <p>Implementation to support students, academic staff, researchers and administrators.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Student Support</h3>
+                <ul>
+                    <li>Contact IT Support</li>
+                    <li>081-6558253</li>
+                    <li>085-7472343</li>
+                    <li>E-mail: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>13 Jackson Kaujeua Street, Windhoek, Namibia</li>
+                    <li>Phone: +264-81 655 8253</li>
+                    <li>Email: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+
+            <div id="chatbot-icon">🤖</div>
+    <div id="chatbot-container" class="hidden">
+      <div id="chatbot-header">
+        <span>LUNA</span>
+        <button id="close-btn">&times;</button>
+      </div>
+      <div id="chatbot-body">
+        <div id="chatbot-messages"></div>
+      </div>
+      <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Ask Luna.... " />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+    <script src="scriptChatBOT.js"></script>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 NamStem eLearning. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Collapsible chapters
+        document.querySelectorAll('.collapsible').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        function setTheme(mode) {
+            if (mode === 'dark') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+        if (localStorage.getItem('theme') === 'dark') setTheme('dark');
+
+        // Course Recommendation Logic
+        function getRecs() {
+            return JSON.parse(localStorage.getItem('courseRecs') || '{}');
+        }
+        function setRecs(obj) {
+            localStorage.setItem('courseRecs', JSON.stringify(obj));
+        }
+        function recommendCourse(course) {
+            let recs = getRecs();
+            recs[course] = (recs[course] || 0) + 1;
+            setRecs(recs);
+            renderCounts();
+        }
+        function renderCounts() {
+            let recs = getRecs();
+            document.getElementById('count-Robotics').textContent = recs['Robotics'] || 0;
+        }
+        renderCounts();
+    </script>
+</body>
+</html>

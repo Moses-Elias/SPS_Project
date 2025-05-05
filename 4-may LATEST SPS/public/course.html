@@ -1,0 +1,247 @@
+<!-- course.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | NamStem eLearning</title>
+    <link rel="stylesheet" href="stylingsheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header id="header">
+        <div class="header-left">
+            <span class="header-logo"><i class="fas fa-atom"></i> NamStem</span>
+            <nav class="header-links">
+                <a href="Home.html" class="header-link"><i class="fas fa-home"></i> Home</a>
+                <a href="Aboutus.html" class="header-link"><i class="fas fa-users"></i> About Us</a>
+                <a href="dashboard.html" class="header-link"><i class="fas fa-building"></i> Dashboard</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+            <button id="logout-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 1em; margin-left: 15px;">
+                Logout
+            </button>
+        </div>
+    </header>
+    <div class="page-header">
+        <h1><i class="fas fa-book-open"></i> Course Overview</h1>
+        <p>Explore our STEM courses and recommend your favorites to other students!</p>
+    </div>
+    <div class="content-container">
+        <div class="course-container">
+            <div class="course-card">
+                <span class="course-icon"><i class="fas fa-paint-brush"></i></span>
+                <a href="Graphics Design.html">
+                    <img src="graphics-design.jpg" alt="Graphics Design">
+                    <h2>Graphics Design</h2>
+                </a>
+                <button class="enroll-btn" onclick="enrollSubject('6814e199bba187067aa4d4d5')">
+                    <i class="fas fa-plus-circle"></i> Enroll
+                </button>
+                
+            </div>
+            <div class="course-card">
+                <span class="course-icon"><i class="fas fa-robot"></i></span>
+                <a href="Robotics.html">
+                    <img src="robotics.png" alt="Robotics">
+                    <h2>Robotics</h2>
+                </a>
+                <button class="enroll-btn" onclick="enrollSubject('68166b9a21bc77c5fb8196d0')">
+                    <i class="fas fa-plus-circle"></i> Enroll
+                </button>
+                
+            </div>
+            <div class="course-card">
+                <span class="course-icon"><i class="fas fa-database"></i></span>
+                <a href="Data Science.html">
+                    <img src="ds.jpg" alt="Data Science">
+                    <h2>Data Science</h2>
+                </a>
+                <button class="enroll-btn" onclick="enrollSubject('67eba1a30f23b4ed814c54b1')">
+                    <i class="fas fa-plus-circle"></i> Enroll
+                </button>
+            </div>
+            <div class="course-card">
+                <span class="course-icon"><i class="fas fa-square-root-alt"></i></span>
+                <a href="Math.html">
+                    <img src="math.avif" alt="Math">
+                    <h2>Math</h2>
+                </a>
+                <button class="enroll-btn" onclick="enrollSubject('6814e1c0bba187067aa4d4d8')">
+                    <i class="fas fa-plus-circle"></i> Enroll
+                </button>
+                
+            </div>
+            <div class="course-card">
+                <span class="course-icon"><i class="fas fa-laptop-code"></i></span>
+                <a href="Introduction to Computing.html">
+                    <img src="ICG.jpg" alt="Introduction to Computing">
+                    <h2>Introduction to Computing</h2>
+                </a>
+                <button class="enroll-btn" onclick="enrollSubject('6814e1efbba187067aa4d4db')">
+                    <i class="fas fa-plus-circle"></i> Enroll
+                </button>
+                
+            </div>
+        </div>
+        <div id="recommendation-form">
+            <h2>Find Courses Based on Your Interests</h2>
+            <div class="form-group">
+              <label for="interest-input">Enter your interest:</label>
+              <input type="text" id="interest-input" placeholder="e.g., I want to learn Python">
+            </div>
+            <button onclick="getRecommendations()">Recommend</button>
+            <div id="recommendation-result"></div>
+          </div>
+
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NamStem eLearning</h3>
+                <p>Implementation to support students, academic staff, researchers and administrators.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Student Support</h3>
+                <ul>
+                    <li>Contact IT Support</li>
+                    <li>081-6558253</li>
+                    <li>085-7472343</li>
+                    <li>E-mail: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>13 Jackson Kaujeua Street, Windhoek, Namibia</li>
+                    <li>Phone: +264-81 655 8253</li>
+                    <li>Email: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 NamStem eLearning. All rights reserved.
+        </div>
+
+      
+    </footer>
+    <script>
+       
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("You must be logged in.");
+            window.location.href = 'LoginPage.html';
+        }
+
+  // Load available subjects from backend
+  async function loadSubjects() {
+            try {
+                const res = await fetch('http://localhost:5000/api/subjects', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await res.json();
+                const subjectList = document.getElementById('subjectList');
+                subjectList.innerHTML = "";
+
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(subject => {
+                        const li = document.createElement('li');
+                        li.textContent = subject.name;
+
+                        const enrollButton = document.createElement('button');
+                        enrollButton.textContent = "Enroll";
+                        enrollButton.onclick = () => enrollSubject(subject._id, enrollButton);
+
+                        li.appendChild(enrollButton);
+                        subjectList.appendChild(li);
+                    });
+                } else {
+                    subjectList.innerHTML = "<li>No subjects available.</li>";
+                }
+            } catch (err) {
+                console.error("Failed to load subjects", err);
+                alert("Error loading subjects.");
+            }
+        }
+
+        // Enroll in a subject
+        async function enrollSubject(subjectId, button) {
+            try {
+                const res = await fetch('http://localhost:5000/api/enroll', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subjectId })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    alert(data.msg || "Subject enrolled successfully!");
+                    button.disabled = true;
+                    button.textContent = "Enrolled";
+                } else {
+                    alert(data.msg || "Failed to enroll in the subject.");
+                }
+            } catch (error) {
+                console.error("Enrollment error:", error);
+                alert("An error occurred during enrollment.");
+            }
+        }
+
+
+        //Recommendation
+        async function getRecommendations() {
+        const userInput = document.getElementById("interest-input").value;
+        const resultDiv = document.getElementById("recommendation-result");
+        resultDiv.innerHTML = "Loading...";
+
+        try {
+            const response = await fetch("http://127.0.0.1:8000/ai-recommend/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ user_input: userInput })
+            });
+
+            const data = await response.json();
+
+            if (data.recommended_courses) {
+                resultDiv.innerHTML = "<h3>Recommended Courses:</h3>";
+                data.recommended_courses.forEach(course => {
+                    const div = document.createElement("div");
+                    div.className = "recommended-course";
+                    div.textContent = course;
+                    resultDiv.appendChild(div);
+                });
+            } else {
+                resultDiv.innerHTML = `<p style="color: red;">${data.error || "No recommendations found."}</p>`;
+            }
+
+        } catch (error) {
+            resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        }
+    }
+        
+    </script>
+</body>
+</html>

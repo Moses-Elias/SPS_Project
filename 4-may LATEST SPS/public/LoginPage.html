@@ -1,0 +1,219 @@
+<!-- LoginPage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/SignUp | NamStem eLearning</title>
+    <link rel="stylesheet" href="stylingsheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header id="header">
+        <div class="header-left">
+            <span class="header-logo"><i class="fas fa-atom"></i> NamStem</span>
+            <nav class="header-links">
+                <a href="Home.html" class="header-link"><i class="fas fa-home"></i> Home</a>
+                <a href="LoginPage.html" class="header-link active"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="Aboutus.html" class="header-link"><i class="fas fa-users"></i> About Us</a>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+    </header>
+    <div class="page-header">
+        <h1><i class="fas fa-sign-in-alt"></i> Login / Sign Up</h1>
+        <p>Access your NamStem eLearning account or create a new one to unlock all features and courses.</p>
+    </div>
+    <div class="auth-container background-image">
+        <div class="welcome-message">
+            <i class="fas fa-user-circle" style="font-size:2em;color:#4caf50;"></i><br>
+            Welcome to NamStem eLearning! Please log in or sign up to access all courses and features.
+        </div>
+        <div class="auth-container">
+            <div class="form-container" id="loginForm">
+                <h1><i class="fas fa-sign-in-alt"></i> Login</h1>
+                <form id="loginFormData">
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="button" id="loginBtn" class="auth-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+
+                <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                    <p style="text-align: center;">OR</p>
+                    <a href="http://localhost:5000/api/auth/google" style="text-decoration: none;">
+                        <button type="button" style="
+                            background-color: white;
+                            color: #444;
+                            border: 1px solid #ddd;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 10px;
+                        ">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style="width: 18px; height: 18px;">
+                            Continue with Google
+                        </button>
+                    </a>
+                </div>
+
+                <p class="toggle-form">Don't have an account? <a href="javascript:void(0);" onclick="toggleAuthForm()">Sign Up</a></p>
+            </div>
+
+            <div class="form-container" id="signupForm" style="display: none;">
+                <h1><i class="fas fa-user-plus"></i> Sign Up</h1>
+                <form id="signupFormData">
+                    <div class="form-group">
+                        <label for="new-username"><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="new-username" name="new-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="new-password" name="new-password" required>
+                    </div>
+                    <button type="button" id="signupBtn" class="auth-btn">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </button>
+                </form>
+                <p class="toggle-form">Already have an account? <a href="javascript:void(0);" onclick="toggleAuthForm()">Login</a></p>
+            
+                <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                    <p style="text-align: center;">OR</p>
+                    <a href="http://localhost:5000/api/auth/google" style="text-decoration: none;">
+                        <button type="button" style="
+                            background-color: white;
+                            color: #444;
+                            border: 1px solid #ddd;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 10px;
+                        ">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style="width: 18px; height: 18px;">
+                            Sign in with Google
+                        </button>
+                    </a>
+                </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NamStem eLearning</h3>
+                <p>Implementation to support students, academic staff, researchers and administrators.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Student Support</h3>
+                <ul>
+                    <li>Contact IT Support</li>
+                    <li>081-6558253</li>
+                    <li>085-7472343</li>
+                    <li>E-mail: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>13 Jackson Kaujeua Street, Windhoek, Namibia</li>
+                    <li>Phone: +264-81 655 8253</li>
+                    <li>Email: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 NamStem eLearning. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // JavaScript function to toggle between login and signup forms
+        window.toggleAuthForm = function() {
+                loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+                signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+            };
+
+        // Handle login form submission
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                // Save token in local storage
+                localStorage.setItem('token', data.token);
+                alert('Login successful');
+                // Redirect to another page if needed
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Login failed: ' + data.msg);
+            }
+        });
+
+        // Handle signup form submission
+        document.getElementById('signupBtn').addEventListener('click', async () => {
+            const newUsername = document.getElementById('new-username').value;
+            const email = document.getElementById('email').value;
+            const newPassword = document.getElementById('new-password').value;
+
+            const response = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: newUsername, email, password: newPassword })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert('Registration successful');
+                // Optionally, automatically log in after successful registration
+                window.location.href = 'course.html';
+            } else {
+                alert('Registration failed: ' + data.msg);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

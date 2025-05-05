@@ -1,0 +1,234 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | NamStem eLearning</title>
+    <link rel="stylesheet" href="stylingsheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header id="header">
+        <div class="header-left">
+            <span class="header-logo"><i class="fas fa-atom"></i> NamStem</span>
+            <nav class="header-links">
+                <a href="Home.html" class="header-link"><i class="fas fa-home"></i> Home</a>
+                <a href="Aboutus.html" class="header-link"><i class="fas fa-users"></i> About Us</a>
+                <a href="course.html" class="header-link"><i class="fas fa-book-open"></i> Courses</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+            <button id="logout-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 1em; margin-left: 15px;">
+                Logout
+            </button>
+        </div>
+    </header>
+
+        <main class="main-content">
+            <div class="dashboard-header">
+                <div>
+                    <h1 id="dashboardTitle">Student Dashboard</h1>
+                    <p class="user-greeting">Welcome back, <span id="userName">Loading...</span>!</p>
+                </div>
+                </div>
+
+            <div class="grid-container">
+                <div class="dashboard-card">
+                    <h3>Enrolled Subjects</h3>
+                    <div class="subject-list-advanced">
+                        <ul id="subjectList">
+                            </ul>
+                        <p id="noSubjects" style="display:none;">No subjects enrolled yet.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card notifications-card">
+                    <h3>Recent Notifications</h3>
+                    <div class="notifications-list">
+                        <ul id="notifications">
+                            <li>New assignment posted for Mathematics.</li>
+                            <li>Reminder: Quiz opening on Friday for Data Science.</li>
+                            </ul>
+                        <p id="noNotifications" style="display:none;">No new notifications.</p>
+                    </div>
+                </div>
+
+                </div>
+
+            <div class="enroll-section">
+                <h2>Looking for More Courses?</h2>
+                <p>Explore and enroll in other interesting subjects to expand your knowledge.</p>
+                <button class="enroll-btn-advanced" onclick="goToSubjectsPage()">Browse All Courses</button>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NamStem eLearning</h3>
+                <p>Implementation to support students, academic staff, researchers and administrators.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Student Support</h3>
+                <ul>
+                    <li>Contact IT Support</li>
+                    <li>081-6558253</li>
+                    <li>085-7472343</li>
+                    <li>E-mail: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>13 Jackson Kaujeua Street, Windhoek, Namibia</li>
+                    <li>Phone: +264-81 655 8253</li>
+                    <li>Email: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 NamStem eLearning. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("You must be logged in.");
+            window.location.href = 'LoginPage.html';
+        }
+
+        async function loadUser() {
+            try {
+                const res = await fetch('http://localhost:5000/api/user', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+
+                const data = await res.json();
+                document.getElementById('userName').textContent = data.username || 'Student'; // Default to 'Student'
+            } catch (error) {
+                console.error("Failed to fetch user info:", error);
+                alert("Failed to fetch user info");
+            }
+        }
+
+        async function loadSubjects() {
+            try {
+                const res = await fetch('http://localhost:5000/api/user/subjects', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+
+                const data = await res.json();
+                const subjectList = document.getElementById('subjectList');
+                const noSubjectsMessage = document.getElementById('noSubjects');
+                subjectList.innerHTML = "";
+
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(subject => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                              <span>${subject.name || subject.title || 'N/A'}</span>
+                              <div class="subject-actions">
+                              <a href="${subject.page || '#'}">View</a>
+                            </div>
+                            `;
+                        subjectList.appendChild(li);
+                    });
+                    noSubjectsMessage.style.display = 'none';
+                } else {
+                    noSubjectsMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error("Failed to fetch enrolled subjects:", error);
+                alert("Failed to fetch enrolled subjects");
+            }
+        }
+
+        function goToSubjectsPage() {
+            window.location.href = 'course.html'; // More generic name
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', function () {
+    // Step 1: Clear user session data
+    localStorage.removeItem('token'); // or use localStorage.clear() to clear everything
+    localStorage.removeItem('user');  // optional: if you store user info
+    sessionStorage.clear();           // optional: clear sessionStorage if used
+    document.cookie = '';             // optional: clear cookies if used
+
+    console.log('User has been logged out.');
+
+    // Step 2: Redirect to login page
+    window.location.href = '/LoginPage.html'; // Adjust path if needed
+});
+
+const subjects = [
+    { name: 'Math', page: 'Math.html' },
+    { name: 'Graphics Design', page: 'Graphics Design.html' },
+    { name: 'Robotics', page: 'Robotics.html' },
+];
+
+        // Optional: Load notifications
+        async function loadNotifications() {
+            try {
+                const res = await fetch('http://localhost:5000/api/user/notifications', { // Example endpoint
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!res.ok) {
+                    console.warn("Failed to fetch notifications:", res.status);
+                    return;
+                }
+
+                const data = await res.json();
+                const notificationsList = document.getElementById('notifications');
+                const noNotificationsMessage = document.getElementById('noNotifications');
+                notificationsList.innerHTML = "";
+
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(notification => {
+                        const li = document.createElement('li');
+                        li.textContent = notification.message || 'No message';
+                        notificationsList.appendChild(li);
+                    });
+                    noNotificationsMessage.style.display = 'none';
+                } else {
+                    noNotificationsMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error("Error fetching notifications:", error);
+            }
+        }
+
+        loadUser();
+        loadSubjects();
+        loadNotifications(); // Call the new function
+    </script>
+</body>
+
+</html>

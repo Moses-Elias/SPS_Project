@@ -1,0 +1,197 @@
+<!-- Graphics Design.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphics Design | NamStem eLearning</title>
+    <link rel="stylesheet" href="stylingsheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="theme.js" defer></script>
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body style="background-image: url('GD.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+    <header id="header">
+        <div class="header-left">
+            <span class="header-logo"><i class="fas fa-atom"></i> NamStem</span>
+            <nav class="header-links">
+                <a href="Home.html" class="header-link"><i class="fas fa-home"></i> Home</a>
+                <a href="course.html" class="header-link"><i class="fas fa-book-open"></i> Courses</a>
+                <a href="Aboutus.html" class="header-link"><i class="fas fa-users"></i> About Us</a>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+    </header>
+    <div class="page-header">
+        <h1><i class="fas fa-paint-brush"></i> Graphics Design Course</h1>
+        <div class="course-description">
+            Dive into the creative world of graphics design and explore the principles that bring visual ideas to life through color, composition, and digital tools.
+        </div>
+    </div>
+    <div class="content-container">
+        <a href="course.html" class="back-courses"><i class="fas fa-arrow-left"></i> Back to Courses</a>
+        <h3 style="color:#4caf50;text-align:left;margin-bottom:10px;"><i class="fas fa-list"></i> Topics Covered</h3>
+        <button class="collapsible"><i class="fas fa-chevron-right"></i> Chapter 1: Introduction & 3D Graphics</button>
+        <div class="chapter-content">
+            <ul>
+                <li>Introduction</li>
+                <li>Painting and Drawing</li>
+                <li>Elements of 3D Graphics</li>
+                <li>Hardware and Software</li>
+            </ul>
+        </div>
+        <button class="collapsible"><i class="fas fa-chevron-right"></i> Chapter 2: 2D Graphics & Modeling</button>
+        <div class="chapter-content">
+            <ul>
+                <li>Two-Dimensional Graphics</li>
+                <li>Pixels, Coordinates, and Colors</li>
+                <li>Shapes</li>
+                <li>Transforms</li>
+                <li>Hierarchical Modeling</li>
+                <li>Java Graphics2D</li>
+                <li>HTML Canvas Graphics</li>
+                <li>SVG: A Scene Description Language</li>
+            </ul>
+        </div>
+        <button class="collapsible"><i class="fas fa-chevron-right"></i> Chapter 3: OpenGL & 3D Techniques</button>
+        <div class="chapter-content">
+            <ul>
+                <li>Shapes and Colors in OpenGL 1.1</li>
+                <li>3D Coordinates and Transforms</li>
+                <li>Projection and Viewing</li>
+                <li>Polygonal Meshes and glDrawArrays</li>
+                <li>Some Linear Algebra</li>
+                <li>Using GLUT and JOGL</li>
+            </ul>
+        </div>
+        <button class="recommend-btn" onclick="recommendCourse('Graphics Design')">
+            <i class="fas fa-thumbs-up"></i> Recommend this course
+            <span class="recommend-count" id="count-Graphics Design">0</span>
+        </button>
+        <div class="content-container lecture-notes">
+            <div class="content-title"><h3><i class="fas fa-file-pdf"></i> Lecture Notes</h3></div>
+            <h3>Download Course Chapters (PDF):</h3>
+            <ul>
+                <li><a href="Chapter 1.pdf" target="_blank"> Chapter 1</a></li>
+                <li><a href="Chapter 2.pdf" target="_blank"> Chapter 2</a></li>
+                <li><a href="Chapter 3.pdf" target="_blank"> Chapter 3</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+<div>
+    <div id="chatbot-icon">🤖</div>
+    <div id="chatbot-container" class="hidden">
+      <div id="chatbot-header">
+        <span>LUNA</span>
+        <button id="close-btn">&times;</button>
+      </div>
+      <div id="chatbot-body">
+        <div id="chatbot-messages"></div>
+      </div>
+      <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Ask Luna.... " />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+    <script src="scriptChatBOT.js"></script>
+</div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NamStem eLearning</h3>
+                <p>Implementation to support students, academic staff, researchers and administrators.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Student Support</h3>
+                <ul>
+                    <li>Contact IT Support</li>
+                    <li>081-6558253</li>
+                    <li>085-7472343</li>
+                    <li>E-mail: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>13 Jackson Kaujeua Street, Windhoek, Namibia</li>
+                    <li>Phone: +264-81 655 8253</li>
+                    <li>Email: <a href="mailto:NamStem@nust.na">NamStem@nust.na</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 NamStem eLearning. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Collapsible chapters
+        document.querySelectorAll('.collapsible').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        function setTheme(mode) {
+            if (mode === 'dark') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+        if (localStorage.getItem('theme') === 'dark') setTheme('dark');
+
+        // Course Recommendation Logic
+        function getRecs() {
+            return JSON.parse(localStorage.getItem('courseRecs') || '{}');
+        }
+        function setRecs(obj) {
+            localStorage.setItem('courseRecs', JSON.stringify(obj));
+        }
+        function recommendCourse(course) {
+            let recs = getRecs();
+            recs[course] = (recs[course] || 0) + 1;
+            setRecs(recs);
+            renderCounts();
+        }
+        function renderCounts() {
+            let recs = getRecs();
+            document.getElementById('count-Graphics Design').textContent = recs['Graphics Design'] || 0;
+        }
+        renderCounts();
+    </script>
+</body>
+</html>
