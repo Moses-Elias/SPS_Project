@@ -1,18 +1,20 @@
-# Use Node.js LTS version as base image
+# Use the official Node.js 18 image
 FROM node:18
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package files first and install dependencies
+# Copy only package files first to install dependencies
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the project files
+# Copy the rest of your application code
 COPY . .
 
-# Expose the port your server runs on
+# Expose port 8080 to match Cloud Run requirements
 EXPOSE 8080
 
-# Command to run your app
+# Start the application
 CMD ["node", "server.js"]
